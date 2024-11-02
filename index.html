@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Claude Registration Form</title>
+    <!-- Add favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Your existing styles remain the same -->
+    <style>
+        /* Your existing styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header remains the same -->
+        <div class="header">
+            <h1>Claude Registration</h1>
+            <p>Become a Claude representative by selecting your preferred package</p>
+        </div>
+
+        <!-- Package cards remain the same -->
+        <div class="package-cards">
+            <!-- Your existing package cards -->
+        </div>
+
+        <!-- Updated form with Netlify attributes -->
+        <form id="registrationForm" name="registration" method="POST" data-netlify="true">
+            <!-- Hidden input for Netlify -->
+            <input type="hidden" name="form-name" value="registration">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select your country</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                    <option value="au">Australia</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <button type="submit">Register Now</button>
+        </form>
+    </div>
+
+    <!-- Modal remains the same -->
+    <div id="modal">
+        <!-- Your existing modal content -->
+    </div>
+
+    <!-- Updated script with form handling -->
+    <script>
+        // Form submission handler with Netlify
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show modal
+            const modal = document.getElementById('modal');
+            modal.style.display = 'block';
+
+            // Optional: Submit form to Netlify
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(new FormData(this)).toString()
+            })
+            .then(() => console.log("Form successfully submitted"))
+            .catch((error) => alert(error));
+        });
+
+        // Your existing modal and package selection code remains the same
+    </script>
+</body>
+</html>

@@ -3,46 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Claude Registration Form</title>
-    <!-- Add favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <!-- Your existing styles remain the same -->
-    <style>
-        /* Your existing styles here */
-    </style>
+    <title>Claude Registration</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Header remains the same -->
         <div class="header">
             <h1>Claude Registration</h1>
             <p>Become a Claude representative by selecting your preferred package</p>
         </div>
 
-        <!-- Package cards remain the same -->
-        <div class="package-cards">
-            <!-- Your existing package cards -->
+        <div class="plans">
+            <div class="plan-card selected">
+                <h3>Starting Pack</h3>
+                <div class="plan-price">$40</div>
+                <ul class="plan-features">
+                    <li>Basic access to Claude AI</li>
+                    <li>Standard support</li>
+                    <li>5 concurrent users</li>
+                </ul>
+                <label>
+                    <input type="radio" name="plan" value="starting" checked>
+                    Select Starting Pack
+                </label>
+            </div>
+
+            <div class="plan-card">
+                <h3>Medium Package</h3>
+                <div class="plan-price">$80</div>
+                <ul class="plan-features">
+                    <li>Advanced access to Claude AI</li>
+                    <li>Priority support</li>
+                    <li>15 concurrent users</li>
+                </ul>
+                <label>
+                    <input type="radio" name="plan" value="medium">
+                    Select Medium Package
+                </label>
+            </div>
         </div>
 
-        <!-- Updated form with Netlify attributes -->
         <form id="registrationForm" name="registration" method="POST" data-netlify="true">
-            <!-- Hidden input for Netlify -->
             <input type="hidden" name="form-name" value="registration">
             
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
             </div>
 
             <div class="form-group">
                 <label for="company">Company Name</label>
-                <input type="text" id="company" name="company" required>
+                <input type="text" id="company" name="company" required placeholder="Enter your company name">
             </div>
 
             <div class="form-group">
@@ -59,39 +75,13 @@
 
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
             </div>
 
             <button type="submit">Register Now</button>
         </form>
     </div>
 
-    <!-- Modal remains the same -->
-    <div id="modal">
-        <!-- Your existing modal content -->
-    </div>
-
-    <!-- Updated script with form handling -->
-    <script>
-        // Form submission handler with Netlify
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show modal
-            const modal = document.getElementById('modal');
-            modal.style.display = 'block';
-
-            // Optional: Submit form to Netlify
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(new FormData(this)).toString()
-            })
-            .then(() => console.log("Form successfully submitted"))
-            .catch((error) => alert(error));
-        });
-
-        // Your existing modal and package selection code remains the same
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
